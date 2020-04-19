@@ -34,9 +34,6 @@ lovelace config:
 
  ```yaml
 type: 'custom:card-channel-pad'
-title: prova
-button_image: "url('/local/lg_remote/tv_logos/Wii.png')"
-# sidebackground: transparent
 entities: #!include: /local/lg_remote/channel-pad-entities.yaml
   - entity: media_player.tv_lg_55c8
     image: "url('/local/lg_remote/tv_logos/Rai 1 HD.png')"
