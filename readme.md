@@ -6,7 +6,7 @@
 ## hacs Card install
 1. add custom reposity: madmicio/channel-pad as plugin.
 
-2. install `LG WebOS Remote Control` plugin
+2. install `LG WebOS channel pad` plugin
 
 3. Add a reference  inside your resources config:
 
