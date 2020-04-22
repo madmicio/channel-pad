@@ -19,35 +19,16 @@ class ChannelPad extends LitElement {
     }
 
     render() {
-        var coverWidth = this.config.coverWidth ? this.config.coverWidth : "80px";
-        var coverHeight = this.config.coverHeight ? this.config.coverHeight : "670px";
-        var sliderdistance = this.config.sliderdistance ? this.config.sliderdistance : "150px";
-
-        var entityCounter = 0;
-
-        var background = this.config.background ? this.config.background : "transparent";
-
-
         return html`
     <div class="grid-container">
-      ${this.config.entities.map(ent => {
-            entityCounter++;
-            const stateObj = this.hass.states[ent.entity];
-            const numberObj = this.hass.states[ent.number];
-            return stateObj ? html`
-                
-                  <div class="grid-item">
-                    <input type="button" id='${entityCounter}' class="input-btn ripple" .value="${ent.number}"  @click=${e => this._channel(stateObj, e.target.value)}>
-<!--                    <button class="btn ripple" style="background-image: ${ent.image} " >${ent.number}cazz</button>' -->
-                    <label class="ripple" style="background-image: ${ent.image}" for='${entityCounter}'></label>
-
-
-                    </div>
-                  </div>
-
-                
-          ` : html``;
-
+      ${this.config.channels.map(channel => {
+            return html`
+              <div class="grid-item">
+                <input type="button" id='${channel.number}' class="input-btn ripple" .value="${channel.number}"  @click=${e => this._select_channel(e.target.value)}>
+<!--                <button class="btn ripple" style="background-image: ${channel.image} " >${channel.number}cazz</button>' -->
+                <label class="ripple" style="background-image: url('${channel.image}')" for='${channel.number}'></label>
+              </div>
+          `;
         })}
       </div>
     `;
@@ -56,21 +37,20 @@ class ChannelPad extends LitElement {
     updated() {
     }
 
-    _channel(state, value,) {
-
+    _select_channel(channel) {
         this.hass.callService("media_player", "play_media", {
-            entity_id: state.entity_id,
+            entity_id: this.config.entity,
             media_content_type: "channel",
-            media_content_id: value,
-
+            media_content_id: channel,
         });
-
-
     }
 
     setConfig(config) {
-        if (!config.entities) {
-            throw new Error("You need to define entities");
+        if (!config.entity) {
+            throw new Error("You need to define entity");
+        }
+        if (!config.channels) {
+            throw new Error("You need to define channels");
         }
         this.config = config;
     }
