@@ -4,7 +4,7 @@
 ![all](example/channels.jpg)
 
 ## hacs Card install
-1. add custom reposity: madmicio/channel-pad as plugin.
+1. add custom reposity: madmicio/LG-Keypad as plugin.
 
 2. install `LG WebOS channel pad` plugin
 
