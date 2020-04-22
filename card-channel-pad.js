@@ -3,42 +3,41 @@ import {
     html,
     css
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
+
 class ChannelPad extends LitElement {
-  
-  static get properties() {
-    return {
-      hass: {},
-      config: {},
-      active: {}
-    };
-  }
-  
-  constructor() {
-    super();
-  }
-  
-  render() {
-    var coverWidth = this.config.coverWidth ? this.config.coverWidth : "80px";
-    var coverHeight = this.config.coverHeight ? this.config.coverHeight : "670px";
-    var sliderdistance = this.config.sliderdistance ? this.config.sliderdistance : "150px";
-    
-    var entityCounter = 0;
 
-    var background = this.config.background ? this.config.background : "transparent";
+    static get properties() {
+        return {
+            hass: {},
+            config: {},
+            active: {}
+        };
+    }
+
+    constructor() {
+        super();
+    }
+
+    render() {
+        var coverWidth = this.config.coverWidth ? this.config.coverWidth : "80px";
+        var coverHeight = this.config.coverHeight ? this.config.coverHeight : "670px";
+        var sliderdistance = this.config.sliderdistance ? this.config.sliderdistance : "150px";
+
+        var entityCounter = 0;
+
+        var background = this.config.background ? this.config.background : "transparent";
 
 
-    
-    
-    return html`
+        return html`
     <div class="grid-container">
       ${this.config.entities.map(ent => {
-          entityCounter++;
-          const stateObj = this.hass.states[ent.entity];
-          const numberObj = this.hass.states[ent.number];
-          return stateObj ? html`
+            entityCounter++;
+            const stateObj = this.hass.states[ent.entity];
+            const numberObj = this.hass.states[ent.number];
+            return stateObj ? html`
                 
                   <div class="grid-item">
-                    <input type="button" id='${entityCounter}' class="input-btn ripple" .value="${ent.number}"  @click=${e => this._channel(stateObj, e.target.value ) }>
+                    <input type="button" id='${entityCounter}' class="input-btn ripple" .value="${ent.number}"  @click=${e => this._channel(stateObj, e.target.value)}>
 <!--                    <button class="btn ripple" style="background-image: ${ent.image} " >${ent.number}cazz</button>' -->
                     <label class="ripple" style="background-image: ${ent.image}" for='${entityCounter}'></label>
 
@@ -47,40 +46,41 @@ class ChannelPad extends LitElement {
                   </div>
 
                 
-          `: html``;
-    
-      })}
+          ` : html``;
+
+        })}
       </div>
     `;
-  }
-    
-  updated() {}
-  
-  _channel(state, value,) {
+    }
 
-    this.hass.callService("media_player", "play_media", {
-        entity_id: state.entity_id,
-        media_content_type: "channel",
-        media_content_id: value,
-        
-    });
-  
+    updated() {
+    }
+
+    _channel(state, value,) {
+
+        this.hass.callService("media_player", "play_media", {
+            entity_id: state.entity_id,
+            media_content_type: "channel",
+            media_content_id: value,
+
+        });
+
 
     }
 
-  setConfig(config) {
-    if (!config.entities) {
-      throw new Error("You need to define entities");
+    setConfig(config) {
+        if (!config.entities) {
+            throw new Error("You need to define entities");
+        }
+        this.config = config;
     }
-    this.config = config;
-  }
 
-  getCardSize() {
-    return this.config.entities.length + 1;
-  }
-  
-  static get styles() {
-    return css`
+    getCardSize() {
+        return this.config.entities.length + 1;
+    }
+
+    static get styles() {
+        return css`
 
     /*Create ripple effec*/
     
@@ -193,8 +193,8 @@ class ChannelPad extends LitElement {
     }
     button:focus {outline:0;}
     `;
-  }  
-  
+    }
+
 }
 
 customElements.define('card-channel-pad', ChannelPad);
