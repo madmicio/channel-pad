@@ -1,8 +1,6 @@
-import {
-    LitElement,
-    html,
-    css
-} from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
+var LitElement = LitElement || Object.getPrototypeOf(customElements.get("home-assistant-main"));
+var html = html || LitElement.prototype.html;
+var css = css || LitElement.prototype.css;
 
 class ChannelPad extends LitElement {
 
