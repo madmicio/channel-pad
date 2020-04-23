@@ -38,7 +38,7 @@ entity: media_player.tv_lg_55c8
 channels:
   - image: "/local/lg_remote/tv_logos/Rai 1 HD.png"
     number: '501'
-  - image: "url('/local/lg_remote/tv_logos/Rai 2 HD.png"
+  - image: "/local/lg_remote/tv_logos/Rai 2 HD.png"
     number: '502'
   - image: "/local/lg_remote/tv_logos/Rai 3 HD.png"
     number: '503' 
