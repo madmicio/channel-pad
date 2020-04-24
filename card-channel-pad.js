@@ -96,8 +96,7 @@ class ChannelPad extends LitElement {
     }
     .grid-container {
       display: grid;
-      grid-template-columns: auto auto auto auto auto auto auto auto auto;
-      grid-template-rows: auto;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       background-color: transparent;
       padding: 10px;
       overflow: hidden;
@@ -137,38 +136,7 @@ class ChannelPad extends LitElement {
       cursor: pointer;
     }
     
-    /*Create ripple effec*/
-    
-    .ripple {
-      position: relative;
-      overflow: hidden;
-      transform: translate3d(0, 0, 0);
-    }
-    
-    .ripple:after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      background-image: radial-gradient(circle, #7a7f87 7%, transparent 7.01%);
-      background-repeat: no-repeat;
-      border-radius: 40px;
-      background-position: 50%;
-      transform: scale(10, 10);
-      opacity: 0;
-      transition: transform .5s, opacity 1s;
-    }
-    
-    .ripple:active:after {
-      transform: scale(0, 0);
-      opacity: .3;
-      transition: 0s;
-    }
-    button:focus {outline:0;}
+
     `;
     }
 
