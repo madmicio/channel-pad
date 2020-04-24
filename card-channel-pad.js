@@ -23,7 +23,6 @@ class ChannelPad extends LitElement {
             return html`
               <div class="grid-item">
                 <input type="button" id='${channel.number}' class="input-btn ripple" .value="${channel.number}"  @click=${e => this._select_channel(e.target.value)}>
-<!--                <button class="btn ripple" style="background-image: ${channel.image} " >${channel.number}cazz</button>' -->
                 <label class="ripple" style="background-image: url('${channel.image}')" for='${channel.number}'></label>
               </div>
           `;
