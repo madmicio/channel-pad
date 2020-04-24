@@ -34,15 +34,13 @@ lovelace config:
 
  ```yaml
 type: 'custom:card-channel-pad'
-entities: #!include: /local/lg_remote/channel-pad-entities.yaml
-  - entity: media_player.tv_lg_55c8
-    image: "url('/local/lg_remote/tv_logos/Rai 1 HD.png')"
+entity: media_player.tv_lg_55c8
+channels:
+  - image: "/local/lg_remote/tv_logos/Rai 1 HD.png"
     number: '501'
-  - entity: media_player.tv_lg_55c8
-    image: "url('/local/lg_remote/tv_logos/Rai 2 HD.png')"
+  - image: "/local/lg_remote/tv_logos/Rai 2 HD.png"
     number: '502'
-  - entity: media_player.tv_lg_55c8
-    image: "url('/local/lg_remote/tv_logos/Rai 3 HD.png')"
+  - image: "/local/lg_remote/tv_logos/Rai 3 HD.png"
     number: '503' 
 ```
 
