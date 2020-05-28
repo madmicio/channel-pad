@@ -6,11 +6,10 @@
 ![all](example/channels.jpg)
 
 ## hacs Card install
-1. search on hacs plugin LG WebOS channel pad.
 
-2. install `LG WebOS channel pad` plugin
+1. Find and install `LG WebOS channel pad` plugin
 
-3. Add a reference  inside your resources config:
+2. Add a reference  inside your resources config:
 
   ```yaml
 resources:
